@@ -9,12 +9,32 @@
 </head>
 
 <body id="body">
+    <script type="text/javascript">
+        function verifica() {
+           if (document.forms[0].email.value.length == 0){
+            alert("Por favor, digite seu e-mail");
+               document.frmEnvia.email.focus();
+              return false;
+           }
+             return true;   
+         }
 
+        function checarEmail() {
+           if( document.forms[0].email.value == ""
+           || document.forms[0].email.value.indexOf('@') == -1
+           || document.forms[0].email.value.indexOf('.') == -1){
+               alert("Por favor, informe um e-mail valido");
+               return false;
+           }
+          
+        } 
+    </script>
+   
     <div class="content">
-    <form>
+        <form method="POST" onsubmit="return ( verifica() )" name="frmEnvia">
     <p>
-        <label>Email</label>
-        <input type="email" placeholder="Digite seu login">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Digite seu login" onblur="checarEmail();">
     </p>
 
     <p>
@@ -52,9 +72,9 @@
         <input type="number" placeholder="Digite seu endereço">
     </p>
     <p>
-        <button id="b"><a href="menu.html">cadastrar</a></button>
+        <button id="b"><a href="">cadastrar</a></button>
     </p>
-    </form>
+        </form>
     </div>
 </body>
 </html>
